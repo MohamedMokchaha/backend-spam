@@ -24,14 +24,22 @@ SECRET_KEY = 'django-insecure-u_itlbi9w&2!i3cizw&6n1ocfe&q@j4v)8e&lbbocurgx=sh^&
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+CORS_ALLOW_ALL_ORIGINS = True
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "netflix-7318a.web.app",
+    "backend-spam.onrender.com",
+]
 
-ALLOWED_HOSTS = []
-
+# CORS settings
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:4200",
+    "https://netflix-7318a.web.app",
+    "https://backend-spam.onrender.com",
 ]
 # Application definition
-
+CORS_ALLOW_ALL_ORIGINS = False
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -44,6 +52,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -51,7 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'FaceData.urls'
